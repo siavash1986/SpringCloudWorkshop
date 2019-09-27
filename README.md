@@ -11,9 +11,8 @@ and in most cases,
 a given lab does not depend on the previous lab.
 
 This provided codebase is a standalone repository,
-but each lab is implemented as an independent pair
-of tags implemented sequential on a single `master`
-branch:
+but each lab is implemented as an independent branch with a pair
+of tags:
 
 -   `{lab-name}-start` -> start point of the lab
 
@@ -21,26 +20,14 @@ branch:
     you may use this to compare to your solution,
     particularly useful if you get stuck on a particular lab.
 
-You may either check out to topic branches to work on the labs:
-
-```bash
-git checkout -b distributed-app distributed-app-start
-```
-
-Or you may "time-warp" to a specific lab by reseting to the
-to its start tag:
-
-```bash
-git reset --hard distributed-app-start
-```
-
-Both scenarios require a clean git workspace.
+The `{lab-name}` branch is set to point HEAD at the `{lab-name}-start`
+tag so the student can merely checkout to the branch and work the lab.
 
 ## Build Tools
 
 This course supports use of either Maven or Gradle.
 The basic build artifacts are provided for you,
-and each lab that modifies or introduces changes in build or
+and each lab that modifies or introduces changes in build or 
 dependencies will include instructions for both tools.
 
 ## Scripts
