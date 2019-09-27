@@ -1,9 +1,9 @@
 package io.pivotal.pal.tracker.timesheets;
 
-import com.netflix.loadbalancer.IPing;
-import com.netflix.loadbalancer.PingUrl;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.pivotal.pal.tracker.timesheets.controller.TimeEntryControllerAspect;
+import io.pivotal.pal.tracker.timesheets.projectclient.ProjectClientAspect;
+import io.pivotal.pal.tracker.timesheets.projectclient.ProjectClientCacheAspect;
 import io.pivotal.pal.tracker.timesheets.repository.TimeEntryRepositoryAspect;
 import io.pivotal.pal.tracker.timesheets.repository.TimeEntryRepositoryHealthIndicator;
 import io.pivotal.pal.tracker.timesheets.repository.TimeEntryRepositoryManager;
@@ -46,7 +46,12 @@ public class TimeEntryInstrumentationConfig {
     }
 
     @Bean
-    public IPing ribbonPing() {
-        return new PingUrl(false, "/actuator/health");
+    public ProjectClientAspect projectClientAspect(MeterRegistry meterRegistry) {
+        return new ProjectClientAspect(meterRegistry);
+    }
+
+    @Bean
+    public ProjectClientCacheAspect projectClientCacheAspect(MeterRegistry meterRegistry) {
+        return new ProjectClientCacheAspect(meterRegistry);
     }
 }
