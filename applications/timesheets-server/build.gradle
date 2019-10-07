@@ -3,4 +3,6 @@ apply from: "../server.gradle"
 dependencies {
     implementation project(':components:timesheets')
     implementation project(':instrumentation:timesheets-instrumentation')
+    implementation("com.netflix.ribbon:ribbon-loadbalancer:$ribbonVersion")
+    implementation("com.netflix.ribbon:ribbon-httpclient:$ribbonVersion")
 }

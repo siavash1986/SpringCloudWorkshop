@@ -1,5 +1,7 @@
 package io.pivotal.pal.tracker.timesheets;
 
+import com.netflix.loadbalancer.IPing;
+import com.netflix.loadbalancer.PingUrl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,5 +28,10 @@ public class TimesheetsApp {
             @Value("${registration.server.endpoint}") String registrationEndpoint
     ) {
         return new ProjectClient(restOperations, registrationEndpoint);
+    }
+
+    @Bean
+    public IPing ribbonPing() {
+        return new PingUrl(false, "/actuator/health");
     }
 }
