@@ -23,7 +23,7 @@
         <java.version>11</java.version>
 
         <!-- Testing Component Versions -->
-        <assertj.version>3.11.1</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
         <junit.version>4.13.1</junit.version>
         <mockito.version>2.23.4</mockito.version>
 
